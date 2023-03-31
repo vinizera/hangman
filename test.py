@@ -1,10 +1,21 @@
 import random
 
-print('hangman, the game')
+print('\033[1mhangman, the game\n\033[m')
 
-words = ['schutz', 'santa lolla', 'arezzo', 'forever 21', 'charlotte russe']
-#words_bet = ['flamengo', 'ponte preta', 'vasco da gama', 'gama', 'nautico', 'corinthians', 'athletico paranaense']
+bank = ['schutz', 'santa lolla', 'arezzo', 'forever 21', 'charlotte russe']
+word = random.choice(bank)
 
-hides = [('_ '*len(i)) for i in words]
-hides = [i.strip() for i in hides]
 
+def get_puzzle():
+    puzzle = ''
+    print('guess the word: ')
+    for i in word:
+        if i != ' ':
+            puzzle += '_ '
+        else:
+            puzzle += ' '
+    puzzle.strip()
+    return puzzle
+
+
+print(get_puzzle())
