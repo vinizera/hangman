@@ -8,11 +8,12 @@ def get_puzzle():
     word = random.choice(bank)
     puzzle = ''
     print('guess the word: ')
+
     for i in word:
         if i != ' ':
             puzzle += '_ '
         else:
             puzzle += ' '
-    puzzle.strip()
+    puzzle = puzzle.strip()
 
     return word, puzzle
