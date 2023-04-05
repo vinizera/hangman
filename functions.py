@@ -14,9 +14,10 @@ def get_puzzle():
             puzzle += '_ '
         else:
             puzzle += ' '
-    puzzle = puzzle.strip()
+    enigma = puzzle.strip()
+    splits = enigma.split(' ')
 
-    return word, puzzle
+    return word, enigma, splits
 
 
 def get_index(guess, word, in_list, off_list):
