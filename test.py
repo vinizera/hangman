@@ -1,6 +1,5 @@
-import functions
+txt = 'hello world'
 
-print('test it')
+txt = txt.replace('o', 'z')
 
-quest = functions.get_puzzle()
-print(quest)
+print(txt)
