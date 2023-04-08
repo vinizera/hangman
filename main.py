@@ -39,6 +39,12 @@ while True:
 
     guess_index = functions.get_index(guess, word, in_list, off_list)
 
+    if len(guess_index) != 0:
+        for x in guess_index:
+            splits[x] = guess
+
+    enigma = ' '.join(splits)
+
     # get the indexes
     print(guess_index)
     print(splits)
