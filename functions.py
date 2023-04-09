@@ -28,9 +28,15 @@ def get_index(guess, word, in_list, off_list):
             if v == guess:
                 to_index.append(c)
         #print('yeah')
-    else:
+    elif guess in in_list:
+        print('\033[31mword already given!\033[m')
+    elif guess not in word and guess not in off_list:
         off_list.append(guess)
+        print('\033[31mwrong answer!\033[m')
         #print('no')
+    elif guess not in word and guess in off_list:
+        off_list.append(guess)
+        print('\033[31mwrong answer already given!\033[m')
 
     # returns the index list
     return to_index

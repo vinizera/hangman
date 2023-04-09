@@ -16,8 +16,12 @@ def get_enigma():
 
 in_list, off_list = list(), list()
 
-
-while True:
+game = True
+turn = 0
+while game:
+    if turn > 5:
+        print('YOU LOSE!')
+        break
     get_enigma()
     guess = input('guess a word: ')
     try:
@@ -33,10 +37,6 @@ while True:
             print('\033[31mthere is no blank spaces!\033[m')
         continue
 
-    if guess in (in_list or off_list):
-        print('\033[31mword already given!\033[m')
-        continue
-
     guess_index = functions.get_index(guess, word, in_list, off_list)
 
     if len(guess_index) != 0:
@@ -45,6 +45,13 @@ while True:
 
     enigma = ' '.join(splits)
 
-    # get the indexes
-    print(guess_index)
-    print(splits)
+    while '_' not in enigma:
+        print(enigma)
+        print('YOU WIN!')
+        game = False
+        break
+    else:
+        turn += 1
+
+
+
