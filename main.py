@@ -7,13 +7,22 @@ quest = functions.get_puzzle()
 
 word = quest[0]
 enigma = quest[1]
+splits = quest[2]
+
+
+def get_enigma():
+    print(enigma)
+
 
 in_list, off_list = list(), list()
 
-print(enigma)
-
-while True:
-
+game = True
+turn = 0
+while game:
+    if turn > 5:
+        print('YOU LOSE!')
+        break
+    get_enigma()
     guess = input('guess a word: ')
     try:
         guess = guess[0].lower()
@@ -28,9 +37,21 @@ while True:
             print('\033[31mthere is no blank spaces!\033[m')
         continue
 
-    if guess in (in_list or off_list):
-        print('\033[31mword already given!\033[m')
-        continue
+    guess_index = functions.get_index(guess, word, in_list, off_list)
 
-    rest = functions.get_index(guess, word, in_list, off_list)
-    print(rest)
+    if len(guess_index) != 0:
+        for x in guess_index:
+            splits[x] = guess
+
+    enigma = ' '.join(splits)
+
+    while '_' not in enigma:
+        print(enigma)
+        print('YOU WIN!')
+        game = False
+        break
+    else:
+        turn += 1
+
+
+
