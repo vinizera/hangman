@@ -1,7 +1,7 @@
 def get_puzzle():
     """
 
-    :return: returns a tuple containing the word[0] and it's enigmated code[1]
+    :return: returns a tuple containing the word[0], it's enigma[1], and it's splitted array enigma[2]
     """
     import random
     bank = ['forever 21', 'charlotte russe']
@@ -40,3 +40,36 @@ def get_index(guess, word, in_list, off_list):
 
     # returns the index list
     return to_index
+
+
+def get_hangman(misses):
+    if misses == 0:
+        print('      ____ \n'
+              '     |     \n'
+              '     |     \n'
+              '     |     \n'
+              '_____|_____')
+    elif misses == 1:
+        print('      ____  \n'
+              '     |   O  \n'
+              '     |      \n'
+              '     |      \n'
+              '_____|______')
+    elif misses == 2:
+        print('      ____  \n'
+              '     |   O  \n'
+              '     |   |  \n'
+              '     |      \n'
+              '_____|______')
+    elif misses == 3:
+        print('      ____  \n'
+              '     |   O  \n'
+              '     |  /|\ \n'
+              '     |      \n'
+              '_____|______')
+    elif misses == 4:
+        print('      ____  \n'
+              '     |   O  \n'
+              '     |  /|\ \n'
+              '     |  / \ \n'
+              '_____|______')

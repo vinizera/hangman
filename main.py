@@ -1,6 +1,6 @@
 import functions
 
-print('\033[1mhangman, the game\n\033[m')
+print('\033[1mhangman, the game\033[m')
 
 
 quest = functions.get_puzzle()
@@ -19,9 +19,10 @@ in_list, off_list = list(), list()
 game = True
 misses = 0
 while game:
-    if misses > 4:
+    if misses >= 4:
         print('YOU LOSE!')
         break
+    functions.get_hangman(misses)
     get_enigma()
     guess = input('guess a word: ')
     try:
@@ -52,7 +53,4 @@ while game:
         print('YOU WIN!')
         game = False
         break
-
-
-
 
