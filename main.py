@@ -17,9 +17,9 @@ def get_enigma():
 in_list, off_list = list(), list()
 
 game = True
-turn = 0
+misses = 0
 while game:
-    if turn > 5:
+    if misses > 4:
         print('YOU LOSE!')
         break
     get_enigma()
@@ -42,6 +42,8 @@ while game:
     if len(guess_index) != 0:
         for x in guess_index:
             splits[x] = guess
+    else:
+        misses += 1
 
     enigma = ' '.join(splits)
 
@@ -50,8 +52,7 @@ while game:
         print('YOU WIN!')
         game = False
         break
-    else:
-        turn += 1
+
 
 
 
