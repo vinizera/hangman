@@ -3,14 +3,20 @@ def get_puzzle():
 
     :return: returns a tuple containing the word[0], it's enigma[1], and it's splitted array enigma[2]
     """
+    import json
     import random
-    bank = ['forever 21', 'charlotte russe']
-    word = random.choice(bank)
+
+    with open('wordbank.json', 'r') as file:
+        data = json.load(file)
+        # gets a random value from the data keys (str) and take it as a tip:
+        tip = random.choice(list(data.keys()))
+        # gets a random value from the selected key (int) and take it as an index:
+        word = data[tip][random.randrange(len(data[tip]))]
 
     splits = [' ' if letter == ' ' else '_' for letter in word]
     enigma = ' '.join(splits)
 
-    return word, enigma, splits
+    return word, enigma, splits, tip
 
 
 def get_index(guess, word, in_list, off_list):
