@@ -8,10 +8,11 @@ quest = functions.get_puzzle()
 word = quest[0]
 enigma = quest[1]
 splits = quest[2]
+tip = quest[3]
 
 
 def get_enigma():
-    print(enigma)
+    print(f'guess a {tip}: {enigma}')
 
 
 in_list, off_list = list(), list()
@@ -24,16 +25,16 @@ while game:
         break
     functions.get_hangman(misses)
     get_enigma()
-    guess = input('guess a word: ')
+    guess = input('your try: ')
     try:
         guess = guess[0].lower()
     except IndexError:
-        print('\033[31mtype a letter (a-z)\033[m')
+        print('\033[31mtry a letter/number\033[m')
         continue
 
     if guess == ' ':
         if ' ' in word:
-            print('\033[31mcant you see the blank spaces?\033[m')
+            print('\033[31mcan\'t you see the blank spaces?\033[m')
         else:
             print('\033[31mthere is no blank spaces!\033[m')
         continue
