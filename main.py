@@ -2,7 +2,6 @@ import functions
 
 print('\033[1mhangman, the game\033[m')
 
-
 quest = functions.get_puzzle()
 
 word = quest[0]
@@ -41,12 +40,14 @@ while game:
             print('\033[31mthere is no blank spaces!\033[m')
         continue
 
-    guess_index = functions.get_index(guess, word, in_list, off_list)
+    # list of current state of puzzle: [0]
+    # boolean value to check if the try counts or not: [1]
+    guess_index, doCount = functions.get_index(guess, word, in_list, off_list)
 
     if len(guess_index) != 0:
         for x in guess_index:
             splits[x] = guess
-    else:
+    elif doCount:
         misses += 1
 
     enigma = ' '.join(splits)
