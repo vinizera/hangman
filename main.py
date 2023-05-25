@@ -20,8 +20,10 @@ in_list, off_list = list(), list()
 game = True
 misses = 0
 while game:
+    from time import sleep
     if misses >= 4:
-        print('YOU LOSE!')
+        print('YOU LOSE! leaving game...')
+        sleep(3)
         break
     functions.get_hangman(misses)
     get_enigma()
@@ -51,7 +53,8 @@ while game:
 
     while '_' not in enigma:
         print(enigma)
-        print('YOU WIN!')
+        print('YOU WIN! leaving game...')
+        sleep(3)
         game = False
         break
 
