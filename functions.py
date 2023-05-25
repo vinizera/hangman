@@ -21,31 +21,31 @@ def get_puzzle():
 
 def get_index(guess, word, in_list, off_list):
 
-    # guess = input('your guess: ')
-
     # list containing the indexes of guess letters
     to_index = list()
 
-    if guess in word:
+    # variable to check if you count the try or not
+    count = True
+
+    if (guess in word) and (guess not in in_list):
         # why not a set?
         in_list.append(guess)
-        count = 0
         for c, v in enumerate(word):
             if v == guess:
                 to_index.append(c)
-        #print('yeah')
+        print('\033[32mright answer!\033[m')
     elif guess in in_list:
-        print('\033[31mword already given!\033[m')
+        count = False
+        print('\033[31manswer already given!\033[m')
     elif guess not in word and guess not in off_list:
         off_list.append(guess)
         print('\033[31mwrong answer!\033[m')
-        #print('no')
     elif guess not in word and guess in off_list:
-        off_list.append(guess)
+        count = False
         print('\033[31mwrong answer already given!\033[m')
 
     # returns the index list
-    return to_index
+    return to_index, count
 
 
 def get_hangman(misses):
